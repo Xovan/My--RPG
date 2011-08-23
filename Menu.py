@@ -155,15 +155,15 @@ class Menu:
                     if e.key == K_UP:
                         self.selection -=1
                         if self.selection < 0:
-                            self.selection = len(self.team.team) - 1       
+                            self.selection = len(self.team.roster) - 1       
                     elif e.key == K_DOWN:
                         self.selection += 1
-                        if self.selection > len(self.team.team) - 1:
+                        if self.selection > len(self.team.roster) - 1:
                             self.selection = 0                      
                     elif e.key == K_END:
                         return
                     elif e.key == K_RETURN:
-                        self.menuItemSelected(self.team.team[self.selection])
+                        self.menuItemSelected(self.team.roster[self.selection])
                         self.chosen = True
                         break
 
@@ -190,15 +190,15 @@ class Menu:
                     if e.key == K_UP:
                         self.selection -=1
                         if self.selection < 0:
-                            self.selection = len(self.team.team) - 1       
+                            self.selection = len(self.team.roster) - 1       
                     elif e.key == K_DOWN:
                         self.selection += 1
-                        if self.selection > len(self.team.team) - 1:
+                        if self.selection > len(self.team.roster) - 1:
                             self.selection = 0                      
                     elif e.key == K_END:
                         return
                     elif e.key == K_RETURN:
-                        self.menuEquipSelected(self.team.team[self.selection])
+                        self.menuEquipSelected(self.team.roster[self.selection])
                         self.chosen = True
                         break
 
@@ -225,15 +225,15 @@ class Menu:
                     if e.key == K_UP:
                         self.selection -=1
                         if self.selection < 0:
-                            self.selection = len(self.team.team) - 1       
+                            self.selection = len(self.team.roster) - 1       
                     elif e.key == K_DOWN:
                         self.selection += 1
-                        if self.selection > len(self.team.team) - 1:
+                        if self.selection > len(self.team.roster) - 1:
                             self.selection = 0                      
                     elif e.key == K_END:
                         return
                     elif e.key == K_RETURN:
-                        self.menuHTCSelected(self.team.team[self.selection])
+                        self.menuHTCSelected(self.team.roster[self.selection])
                         self.chosen = True
                         break
                         
@@ -260,15 +260,15 @@ class Menu:
                     if e.key == K_UP:
                         self.selection -=1
                         if self.selection < 0:
-                            self.selection = len(self.team.team) - 1       
+                            self.selection = len(self.team.roster) - 1       
                     elif e.key == K_DOWN:
                         self.selection += 1
-                        if self.selection > len(self.team.team) - 1:
+                        if self.selection > len(self.team.roster) - 1:
                             self.selection = 0                      
                     elif e.key == K_END:
                         return
                     elif e.key == K_RETURN:
-                        self.menuStatusSelected(self.team.team[self.selection])
+                        self.menuStatusSelected(self.team.roster[self.selection])
                         self.chosen = True
                         break
 
@@ -295,15 +295,15 @@ class Menu:
                     if e.key == K_UP:
                         self.selection -=1
                         if self.selection < 0:
-                            self.selection = len(self.team.team) - 1       
+                            self.selection = len(self.team.roster) - 1       
                     elif e.key == K_DOWN:
                         self.selection += 1
-                        if self.selection > len(self.team.team) - 1:
+                        if self.selection > len(self.team.roster) - 1:
                             self.selection = 0                      
                     elif e.key == K_END:
                         return
                     elif e.key == K_RETURN:
-                        self.menuOrderSelected(self.team.team[self.selection])
+                        self.menuOrderSelected(self.team.roster[self.selection])
                         self.chosen = True
                         break                     
 
@@ -330,15 +330,15 @@ class Menu:
                     if e.key == K_UP:
                         self.selection -=1
                         if self.selection < 0:
-                            self.selection = len(self.team.team) - 1       
+                            self.selection = len(self.team.roster) - 1       
                     elif e.key == K_DOWN:
                         self.selection += 1
-                        if self.selection > len(self.team.team) - 1:
+                        if self.selection > len(self.team.roster) - 1:
                             self.selection = 0                      
                     elif e.key == K_END:
                         return
                     elif e.key == K_RETURN:
-                        self.menuWTCSelected(self.team.team[self.selection])
+                        self.menuWTCSelected(self.team.roster[self.selection])
                         self.chosen = True
                         break
 

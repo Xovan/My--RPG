@@ -188,7 +188,7 @@ class GameLoop:
         self.newSkins = self.instance.battleMain()
         if self.newSkins is not None:        
             for x in range(len(self.newSkins)):
-                self.team.team[x].currentSkin = self.newSkins[x]
+                self.team.roster[x].currentSkin = self.newSkins[x]
 
                         
     def portal(self):
@@ -215,7 +215,7 @@ class GameLoop:
         PlayerData.loadPlayerGraphics("rena", "nightgown")
         self.player.currentSkin = "rena_nightgown"
         self.team.add(CharacterData.CharacterData("Rena"))
-        self.team.team[0].currentSkin = "rena_nightgown"
+        self.team.roster[0].currentSkin = "rena_nightgown"
         self.player.setPosition(288, 192)
         self.player.display()
         

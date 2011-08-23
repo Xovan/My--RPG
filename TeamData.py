@@ -1,6 +1,6 @@
 class TeamData:
     def __init__(self):
-        self.team = []
+        self.roster = []
         self.money = 100
         self.HTCList = []
         self.WTCList = []
@@ -9,10 +9,10 @@ class TeamData:
 
 
     def add(self, character):
-        self.team.append(character)
+        self.roster.append(character)
 
     def remove(self, character):
-        self.team.remove(character)
+        self.roster.remove(character)
         
     def addShit(self, shit):
         if shit.name in self.shit:

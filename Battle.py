@@ -38,7 +38,7 @@ class Battle:
         self.selection = 0
         self.battleBool = True
         self.teamNum = 0
-        self.selectedMember = self.team.team[0]
+        self.selectedMember = self.team.roster[0]
         self.selectedMemNum = 13
         self.actions = []
         self.executeMoves = False
@@ -64,7 +64,7 @@ class Battle:
     def battleMain(self):
         self.display.getScreen().blit(self.textureManager.textures["bg"][0], (0,0))
         self.height = 0
-        for v in self.team.team:
+        for v in self.team.roster:
             self.display.getScreen().blit(self.textureManager.textures[v.currentSkin][0], (504,96+self.height*32), self.textureManager.spriteRects[v.currentSkin][13])
             self.height+=1
         for x in range(self.numMonsters):
@@ -153,7 +153,7 @@ class Battle:
                             tmp = [self.selectedMember, "RUN"]
                             self.actions.append(tmp)
                             self.teamNum += 1
-                            if self.teamNum == len(self.team.team):
+                            if self.teamNum == len(self.team.roster):
                                 self.enemyActions()                                
                                 self.teamNum = 0
                                 self.executeMoves = True
@@ -197,7 +197,7 @@ class Battle:
                 break        
             self.actions.remove(self.highestAction)
             self.display.getScreen().blit(self.textureManager.textures["bg"][0], (0,0))
-            for x in self.team.team:
+            for x in self.team.roster:
                 if float(x.attributes.stats[0])*.8 <= x.HP:
                     if x.currentSkin.count('-') == 0:
                         x.currentSkin = x.currentSkin
@@ -224,7 +224,7 @@ class Battle:
                     else:
                         x.currentSkin = x.currentSkin[:-2] + "20"                                     
             self.height = 0                    
-            for x in self.team.team:
+            for x in self.team.roster:
                 self.display.getScreen().blit(self.textureManager.textures[x.currentSkin][0], (504,96+self.height*32), self.textureManager.spriteRects[x.currentSkin][13])
                 self.height += 1    
             self.drawStats()
@@ -259,17 +259,17 @@ class Battle:
                                 self.open = False
                 #Won battle
                 self.ret = []
-                for x in self.team.team:
+                for x in self.team.roster:
                     self.ret.append(x.currentSkin)                    
                 return self.ret
 
-            for x in self.team.team:
+            for x in self.team.roster:
                 if x.HP <= 0:
                     x.alive = False
-            for x in range(len(self.team.team)):
-                if self.team.team[x].alive:
+            for x in range(len(self.team.roster)):
+                if self.team.roster[x].alive:
                     break
-                elif x is len(self.team.team)-1:
+                elif x is len(self.team.roster)-1:
                     self.displayMonsters()
                     self.battleBox.addText("Game Over...")
                     GlobalData.quitFlag = 1
@@ -329,17 +329,17 @@ class Battle:
                             self.open = False
             #Won battle
             self.ret = []
-            for x in self.team.team:
+            for x in self.team.roster:
                 self.ret.append(x.currentSkin)                    
             return self.ret
 
-        for x in self.team.team:
+        for x in self.team.roster:
             if x.HP <= 0:
                 x.alive = False
-        for x in range(len(self.team.team)):
-            if self.team.team[x].alive:
+        for x in range(len(self.team.roster)):
+            if self.team.roster[x].alive:
                 break
-            elif x is len(self.team.team)-1:
+            elif x is len(self.team.roster)-1:
                 self.displayMonsters()
                 self.battleBox.addText("Game Over...")
                 GlobalData.quitFlag = 1
@@ -360,8 +360,8 @@ class Battle:
         pygame.font.init()
         self.font = pygame.font.Font(None, 24)
         self.display.getScreen().blit(self.font.render(str(Attributes.attributeNames), 0, (255,255,255)), (24,24))
-        self.display.getScreen().blit(self.font.render(str(self.team.team[0].attributes.stats), 0, (255,255,255)), (24,48))
-        self.display.getScreen().blit(self.font.render("HP:" + str(self.team.team[0].HP), 0, (255,255,255)), (24,72))    
+        self.display.getScreen().blit(self.font.render(str(self.team.roster[0].attributes.stats), 0, (255,255,255)), (24,48))
+        self.display.getScreen().blit(self.font.render("HP:" + str(self.team.roster[0].HP), 0, (255,255,255)), (24,72))    
 
     def enemyActions(self):
         #print "Enemy monsters"
@@ -400,7 +400,7 @@ class Battle:
                         self.num += 1
                         self.itemTrue = True
                     self.act = random.randint(0,self.num)
-                    self.actedOn = random.choice(self.team.team)
+                    self.actedOn = random.choice(self.team.roster)
                     
                     if self.act == 0:
                         tmp = [x, "ATTACK", self.actedOn]
@@ -448,7 +448,7 @@ class Battle:
                             if e.key == K_RETURN:
                                 self.open = False
                 self.ret = []
-                for x in self.team.team:
+                for x in self.team.roster:
                     self.ret.append(x.currentSkin)                    
                 return self.ret
             else:
@@ -620,7 +620,7 @@ class Battle:
                         
                         self.actions.append(tmp)
                         self.teamNum += 1
-                        if self.teamNum == len(self.team.team):
+                        if self.teamNum == len(self.team.roster):
                             self.enemyActions()                                
                             self.teamNum = 0
                             self.executeMoves = True

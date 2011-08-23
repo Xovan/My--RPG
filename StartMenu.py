@@ -157,15 +157,15 @@ class StartMenu:
                     if e.key == K_UP:
                         self.selection -=1
                         if self.selection < 0:
-                            self.selection = len(self.team.team) - 1       
+                            self.selection = len(self.team.roster) - 1       
                     elif e.key == K_DOWN:
                         self.selection += 1
-                        if self.selection > len(self.team.team) - 1:
+                        if self.selection > len(self.team.roster) - 1:
                             self.selection = 0                      
                     elif e.key == K_END:
                         return
                     elif e.key == K_RETURN:
-                        self.menuItemSelected(self.team.team[self.selection])
+                        self.menuItemSelected(self.team.roster[self.selection])
                         self.chosen = True
                         break
 
@@ -192,15 +192,15 @@ class StartMenu:
                     if e.key == K_UP:
                         self.selection -=1
                         if self.selection < 0:
-                            self.selection = len(self.team.team) - 1       
+                            self.selection = len(self.team.roster) - 1       
                     elif e.key == K_DOWN:
                         self.selection += 1
-                        if self.selection > len(self.team.team) - 1:
+                        if self.selection > len(self.team.roster) - 1:
                             self.selection = 0                      
                     elif e.key == K_END:
                         return
                     elif e.key == K_RETURN:
-                        self.menuEquipSelected(self.team.team[self.selection])
+                        self.menuEquipSelected(self.team.roster[self.selection])
                         self.chosen = True
                         break
 
@@ -227,15 +227,15 @@ class StartMenu:
                     if e.key == K_UP:
                         self.selection -=1
                         if self.selection < 0:
-                            self.selection = len(self.team.team) - 1       
+                            self.selection = len(self.team.roster) - 1       
                     elif e.key == K_DOWN:
                         self.selection += 1
-                        if self.selection > len(self.team.team) - 1:
+                        if self.selection > len(self.team.roster) - 1:
                             self.selection = 0                      
                     elif e.key == K_END:
                         return
                     elif e.key == K_RETURN:
-                        self.menuHTCSelected(self.team.team[self.selection])
+                        self.menuHTCSelected(self.team.roster[self.selection])
                         self.chosen = True
                         break
                         
@@ -262,15 +262,15 @@ class StartMenu:
                     if e.key == K_UP:
                         self.selection -=1
                         if self.selection < 0:
-                            self.selection = len(self.team.team) - 1       
+                            self.selection = len(self.team.roster) - 1       
                     elif e.key == K_DOWN:
                         self.selection += 1
-                        if self.selection > len(self.team.team) - 1:
+                        if self.selection > len(self.team.roster) - 1:
                             self.selection = 0                      
                     elif e.key == K_END:
                         return
                     elif e.key == K_RETURN:
-                        self.menuStatusSelected(self.team.team[self.selection])
+                        self.menuStatusSelected(self.team.roster[self.selection])
                         self.chosen = True
                         break
 
@@ -297,15 +297,15 @@ class StartMenu:
                     if e.key == K_UP:
                         self.selection -=1
                         if self.selection < 0:
-                            self.selection = len(self.team.team) - 1       
+                            self.selection = len(self.team.roster) - 1       
                     elif e.key == K_DOWN:
                         self.selection += 1
-                        if self.selection > len(self.team.team) - 1:
+                        if self.selection > len(self.team.roster) - 1:
                             self.selection = 0                      
                     elif e.key == K_END:
                         return
                     elif e.key == K_RETURN:
-                        self.menuOrderSelected(self.team.team[self.selection])
+                        self.menuOrderSelected(self.team.roster[self.selection])
                         self.chosen = True
                         break                     
 
@@ -332,15 +332,15 @@ class StartMenu:
                     if e.key == K_UP:
                         self.selection -=1
                         if self.selection < 0:
-                            self.selection = len(self.team.team) - 1       
+                            self.selection = len(self.team.roster) - 1       
                     elif e.key == K_DOWN:
                         self.selection += 1
-                        if self.selection > len(self.team.team) - 1:
+                        if self.selection > len(self.team.roster) - 1:
                             self.selection = 0                      
                     elif e.key == K_END:
                         return
                     elif e.key == K_RETURN:
-                        self.menuWTCSelected(self.team.team[self.selection])
+                        self.menuWTCSelected(self.team.roster[self.selection])
                         self.chosen = True
                         break
 
@@ -497,10 +497,14 @@ class MenuBox:
             self.yPlus += 32        
 
         self.yPlus = 0
-        for x in self.team.team:
-            GlobalData.display.getScreen().blit(GlobalData.textureManager.textures[self.team.team[x].currentSkin][0], (96,96), GlobalData.textureManager.spriteRects[self.team.team[x].currentSkin][self.facing])
-            GlobalData.display.getScreen().blit(self.font.render(x, 0, (255,255,255)), (144, 96 + self.yPlus))
+	#Changed this to a while loop to prevent the stupid thing from assigning the index an object value        
+	xhorizontal=0
+        rosterarray = self.team.roster
+        while xhorizontal <len(rosterarray):
+            GlobalData.display.getScreen().blit(GlobalData.textureManager.textures[rosterarray[xhorizontal].currentSkin][0], (96,96), GlobalData.textureManager.spriteRects[rosterarray[xhorizontal].currentSkin][self.facing])
+            GlobalData.display.getScreen().blit(self.font.render(xhorizontal, 0, (255,255,255)), (144, 96 + self.yPlus))
             self.facing += 1
+            xhorizontal += 1
             if self.facing == 13:
                 self.facing  = 9
 

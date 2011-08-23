@@ -1,0 +1,4 @@
+Changelog 8/22/11 9:17PM PST
+Globally changed the team[] array to roster[] to prevent confusion between the team and roster.
+StartMenu.py: 
+Fixed type error issue when trying to open your inventory or accessing items in battle.  Nothing else works with the inventory yet.  Cannot use items, cannot use items in battle.
